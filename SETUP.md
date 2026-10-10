@@ -4,6 +4,8 @@ This directory contains the profile draft for `ThomasShelby4477`. No remote prof
 
 ## Edit and rebuild
 
+The header includes a self-contained typing animation in its SVG assets. The name types once and the tagline cycles slowly; reduced-motion preferences select static text. All animation timing is generated in `scripts/visuals.py`.
+
 `profile.json` contains the name, introduction, public contact links, projects, experience, leadership, and education. Edit it, then run:
 
 ```sh

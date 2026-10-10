@@ -48,14 +48,57 @@ def write_variants(stem,renderer):
             (ASSETS/f'{stem}-{theme}{"-mobile" if mobile else ""}.svg').write_text(renderer(theme,mobile))
 
 
+def typed_name(x,y,value,size,color,delay):
+    letters=''.join(f'<tspan class="name-letter" style="animation-delay:{delay+i*.09:.2f}s">{html.escape(char)}</tspan>' for i,char in enumerate(value))
+    return f'<text x="{x}" y="{y}" fill="{color}" font-size="{size}" font-weight="900" letter-spacing="-4">{letters}</text>'
+
+
+def typing_taglines(x,y,size,color):
+    """Native SVG timing: 1.5s typing, a long reading pause, then deletion.
+
+    Three eight-second slots keep geometry fixed. No script, remote font,
+    or animation service is involved. A media query supplies static text.
+    """
+    lines=['SECURITY × SOFTWARE','PRIVACY BY DESIGN','AI DEVELOPER TOOLS']
+    out='<g class="typing-still">'+text(x,y,lines[0],size,color,700)+'</g><g class="typing-motion">'
+    for index,line in enumerate(lines):
+        start=index*8;advance=size*.6
+        events=[(0,0)]
+        if start: events.append((start,0))
+        events.extend((start+.15+i*.075,i*advance) for i in range(1,len(line)+1))
+        events.append((start+6.4,len(line)*advance))
+        events.extend((start+6.4+i*.035,(len(line)-i)*advance) for i in range(1,len(line)+1))
+        events.append((24,0))
+        times=';'.join(f'{t/24:.6f}' for t,_ in events)
+        widths=';'.join(f'{width:.2f}' for _,width in events)
+        positions=';'.join(f'{x+width+3:.2f}' for _,width in events)
+        visible=';'.join('1' if width else '0' for _,width in events)
+        timing=f'begin="1.8s" dur="24s" keyTimes="{times}" calcMode="discrete" repeatCount="indefinite"'
+        out+=f'<defs><clipPath id="type-{index}"><rect x="{x}" y="{y-size-3}" width="0" height="{size+9}"><animate attributeName="width" values="{widths}" {timing}/></rect></clipPath></defs>'
+        out+=f'<g clip-path="url(#type-{index})">'+text(x,y,line,size,color,700,f'textLength="{len(line)*advance:.2f}" lengthAdjust="spacingAndGlyphs"')+'</g>'
+        out+=f'<g opacity="0"><animate attributeName="opacity" values="{visible}" {timing}/><rect class="typing-cursor" x="{x+3}" y="{y-size+3}" width="2" height="{size}" fill="{color}"><animate attributeName="x" values="{positions}" {timing}/></rect></g>'
+    return out+'</g>'
+
+
 def hero(config,theme,mobile):
     c=THEMES[theme];w,h=(420,344) if mobile else (960,344);x=24 if mobile else 32
     b=rect(1,1,w-2,40,c['accent'])
     b+=text(x,27,'CYBERSECURITY / DATA / SOFTWARE',10 if mobile else 15,c['bg'],700,'letter-spacing=".5"')
-    b+=text(x,120 if mobile else 132,'VAIBHAV',63 if mobile else 88,c['fg'],900,'letter-spacing="-4"')
-    b+=text(x,185 if mobile else 217,'YADAV_',63 if mobile else 88,c['accent'],900,'letter-spacing="-4"')
+    b+='''<style>
+      .name-letter{animation:letter-in .06s ease-out both}
+      @keyframes letter-in{from{opacity:0}to{opacity:1}}
+      .typing-still{display:none}
+      .typing-cursor{animation:cursor-pulse 1.1s ease-in-out infinite}
+      @keyframes cursor-pulse{0%,35%,100%{opacity:1}60%,80%{opacity:0}}
+      @media(prefers-reduced-motion:reduce){
+        .name-letter{animation:none;opacity:1}
+        .typing-motion{display:none}.typing-still{display:inline}
+      }
+    </style>'''
+    b+=typed_name(x,120 if mobile else 132,'VAIBHAV',63 if mobile else 88,c['fg'],.18)
+    b+=typed_name(x,185 if mobile else 217,'YADAV_',63 if mobile else 88,c['accent'],1)
     b+=f'<path d="M{x} 237h{w-2*x if mobile else 460}" stroke="{c["fg"]}" stroke-width="2"/>'
-    b+=text(x,267,'SECURITY × SOFTWARE',18 if mobile else 22,c['fg'],700)
+    b+=typing_taglines(x,267,18 if mobile else 22,c['fg'])
     b+=text(x,294,'Privacy. AI tools. Operational risk.',12 if mobile else 14,c['muted'])
     b+=text(x,325,'@'+config['username'],11,c['warm'],600)
     if not mobile:
