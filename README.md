@@ -9,11 +9,11 @@
 </p>
 
 <p align="center">
-  <a href="#selected-work"><img src="assets/nav-work.svg" height="52" alt="Selected work"></a>
-  <a href="#toolkit"><img src="assets/nav-toolkit.svg" height="52" alt="Toolkit"></a>
-  <a href="#education"><img src="assets/nav-education.svg" height="52" alt="Education"></a>
-  <a href="#github-activity"><img src="assets/nav-activity.svg" height="52" alt="GitHub activity"></a>
-  <a href="#connect"><img src="assets/nav-connect.svg" height="52" alt="Connect"></a>
+  <a href="#user-content-selected-work"><img src="assets/nav-work.svg" height="52" alt="Selected work"></a>
+  <a href="#user-content-toolkit"><img src="assets/nav-toolkit.svg" height="52" alt="Toolkit"></a>
+  <a href="#user-content-education"><img src="assets/nav-education.svg" height="52" alt="Education"></a>
+  <a href="#user-content-github-activity"><img src="assets/nav-activity.svg" height="52" alt="GitHub activity"></a>
+  <a href="#user-content-connect"><img src="assets/nav-connect.svg" height="52" alt="Connect"></a>
 </p>
 
 

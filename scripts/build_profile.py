@@ -34,7 +34,8 @@ def navigation():
     sections=[('work','Selected work','selected-work'),('experience','Experience','experience'),('toolkit','Toolkit','toolkit'),('education','Education','education'),('activity','GitHub activity','github-activity'),('connect','Connect','connect')]
     if not CONFIG.get('show_experience', True):
         sections=[section for section in sections if section[0]!='experience']
-    return link_badges([(f'nav-{key}',label,f'#{anchor}') for key,label,anchor in sections],True)
+    # GitHub prefixes rendered heading IDs on the profile Overview page.
+    return link_badges([(f'nav-{key}',label,f'#user-content-{anchor}') for key,label,anchor in sections],True)
 
 
 def contacts():

@@ -24,7 +24,7 @@ def anchor(match):
     level, body = match.groups()
     plain = re.sub('<[^>]+>', '', body)
     slug = re.sub(r'[^\w\s-]', '', plain).strip().lower().replace(' ', '-')
-    return f'<h{level} id="{slug}">{body}</h{level}>'
+    return f'<h{level} id="user-content-{slug}">{body}</h{level}>'
 
 markup = re.sub(r'<h([1-6])>(.*?)</h\1>', anchor, markup)
 # Local browsers can retain older SVG dimensions between rapid rebuilds.
