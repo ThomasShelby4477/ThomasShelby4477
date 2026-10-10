@@ -1,6 +1,6 @@
 # Profile package
 
-This directory contains the profile draft for `ThomasShelby4477`. No remote profile repository existed at review time. The draft has not been published.
+This directory contains the published profile for [`ThomasShelby4477`](https://github.com/ThomasShelby4477), hosted by the public [`ThomasShelby4477/ThomasShelby4477`](https://github.com/ThomasShelby4477/ThomasShelby4477) repository. Publication was authorised and completed on 10 October 2026.
 
 ## Edit and rebuild
 
@@ -41,10 +41,14 @@ Preview image URLs include content fingerprints so rebuilds display current artw
 
 ## Publication
 
-Publish only after reviewing the draft. GitHub requires a **public repository named `ThomasShelby4477`** owned by `ThomasShelby4477`, with a nonempty root `README.md`, to show this content on the profile.
+The reviewed profile is published. GitHub displays it because the public repository matches the username and contains a nonempty root `README.md`.
 
 The intended published files are `README.md`, `profile.json`, `assets/`, `scripts/`, `.github/workflows/profile.yml`, `.gitignore`, `SETUP.md`, and `research/PROFILE_AUDIT.md`. The résumé itself and local preview screenshots are not part of the profile repository.
 
-After publication, run the **Refresh profile** workflow manually once and verify its output. It is also scheduled daily at 02:23 UTC. The last committed cards remain available if a later refresh fails. Repository settings or branch protection may require an adjustment before the bot can push its updates.
+The first hosted **Refresh profile** workflow completed successfully and committed updated public statistics. It is scheduled daily at 07:53 IST (02:23 UTC). The last committed cards remain available if a later refresh fails. Repository settings or branch protection may require an adjustment before the bot can push its updates.
 
 Update sidebar name, bio, social links, and pins using the reviewed suggestions in `research/PROFILE_AUDIT.md`. They are separate GitHub profile settings; adding a README does not change them.
+
+## Contact privacy
+
+The public profile uses email, LinkedIn, GitHub, and the Maskr store listing. Do not add Vaibhav's personal mobile number or upload the résumé PDF. This restriction was explicitly requested on 10 October 2026.

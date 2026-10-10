@@ -19,7 +19,7 @@
 
 <hr>
 
-<h3 align="center">Data Analyst Intern @ Delhivery | Former SOC Intern @ RailTel
+<h3 align="center">Data Analyst Intern @ Delhivery | Ex-SOC Intern @ RailTel
 <br>
 M.Tech Student | Developer of Maskr</h3>
 

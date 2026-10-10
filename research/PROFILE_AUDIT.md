@@ -4,7 +4,7 @@ Reviewed 10 October 2026. This is a review of the public profile and source repo
 
 ## Current profile
 
-[ThomasShelby4477](https://github.com/ThomasShelby4477) has ten public repositories, no profile README, and no public name, bio, company, location, or contact details in its API response. The overview shows “Popular repositories,” led by Phone Detection and Turn on Light, rather than a deliberately curated set of recent work. The profile publicly displays 175 contributions over its rolling year.
+At the initial review, [ThomasShelby4477](https://github.com/ThomasShelby4477) had ten public repositories, no profile README, and no public name, bio, company, location, or contact details in its API response. The overview shows “Popular repositories,” led by Phone Detection and Turn on Light, rather than a deliberately curated set of recent work. The profile publicly displays 175 contributions over its rolling year.
 
 The account handle gives little information about Vaibhav's professional identity. The first screen should establish his name, cybersecurity background, software work, and a clear route to selected projects and contact.
 
@@ -94,17 +94,17 @@ Fetch failures fail the workflow and retain the previous committed cards. Snapsh
 
 Completed checks: GitHub Markdown API rendering; all generated SVG assets parsed as XML with accessibility titles; live public statistics collection and offline rebuilding; Python script compilation; workflow YAML parsing; visual inspection at 1280px desktop and 390px phone widths in light and dark themes. The browser confirmed all responsive image assets loaded at each tested breakpoint and there was no page-wide horizontal overflow. The activity navigation reached its heading. The complete desktop page was also visually inspected.
 
-The preview is a local approximation using GitHub-rendered Markdown and GitHub-style CSS. Publication is required to verify the actual profile shell, sidebar, repository pins, remote asset URLs, and hosted GitHub Actions. Nothing has been published or changed on the account.
+The preview is a local approximation using GitHub-rendered Markdown and GitHub-style CSS. Publication is required to verify the actual profile shell, sidebar, repository pins, remote asset URLs, and hosted GitHub Actions. These checks preceded publication; the publication verification below records the live result.
 
 ## Visual refresh validation · 10 October 2026
 
-The brutalist dark refresh uses near-black (#10120f), off-white (#f2f3e8), acid green (#c6ff00), and burnt orange (#ff773d), with square panels, heavy borders, and bold monospace artwork. The refresh includes branded contact badges, original project cards, a skills table, separate degree-status panels, a public contribution heatmap and a full-width monthly chart. Live collection reconciled 175 contributions across 19 active days, a longest streak of 3 days, and a peak of 42 contributions. Ten public owned repositories earned one star. Language distribution was removed at Vaibhav’s request. The calendar parser was checked against year-boundary, zero-activity, and incomplete-data cases. SVG XML parsing, GitHub Markdown rendering, and phone/desktop visual checks pass. Remote publication and the hosted workflow remain unverified.
+The brutalist dark refresh uses near-black (#10120f), off-white (#f2f3e8), acid green (#c6ff00), and burnt orange (#ff773d), with square panels, heavy borders, and bold monospace artwork. The refresh includes branded contact badges, original project cards, a skills table, separate degree-status panels, a public contribution heatmap and a full-width monthly chart. Live collection reconciled 175 contributions across 19 active days, a longest streak of 3 days, and a peak of 42 contributions. Ten public owned repositories earned one star. Language distribution was removed at Vaibhav’s request. The calendar parser was checked against year-boundary, zero-activity, and incomplete-data cases. SVG XML parsing, GitHub Markdown rendering, and phone/desktop visual checks pass. These initial checks preceded publication; see the live verification below.
 
 ## Header animation · 10 October 2026
 
 The header now types the name once, then cycles three taglines: Security × Software, Privacy by Design, and AI Developer Tools. Each tagline gets an eight-second slot with character-by-character typing, a long reading pause, and faster deletion. Geometry remains fixed throughout the animation. The cursor fades gently. The artwork is self-contained, with CSS for the name/cursor and native SVG timing for the tagline; it requires no JavaScript, external fonts, or animation service.
 
-A prefers-reduced-motion rule reveals the complete name and a static tagline. A local inspection fixture activates those same rules for visual checking without changing the user's system preferences. The generated animation timelines and SVG XML were validated; desktop/phone preview rendering and the static fallback were inspected. Actual GitHub asset delivery remains pending publication.
+A prefers-reduced-motion rule reveals the complete name and a static tagline. A local inspection fixture activates those same rules for visual checking without changing the user's system preferences. The generated animation timelines and SVG XML were validated; desktop/phone preview rendering and the static fallback were inspected. Actual GitHub asset delivery was subsequently verified during publication review below.
 
 References: [Readme Typing SVG](https://github.com/DenverCoder1/readme-typing-svg) demonstrates animated SVGs in profile READMEs; [MDN SVG animation](https://developer.mozilla.org/en-US/docs/Web/SVG/Guides/SVG_animation_with_SMIL) documents the native timing mechanism, and [MDN reduced motion](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-reduced-motion) documents the media query. The animation here is original code, without source copied from the example.
 
@@ -112,7 +112,7 @@ References: [Readme Typing SVG](https://github.com/DenverCoder1/readme-typing-sv
 
 Artwork now sits in native paragraphs, giving project images a verified 16px gap before their descriptions under GitHub-style Markdown rendering. Project interiors have larger insets, descriptions and actions are separated, and project groups have consistent breathing room. Navigation and contact links use square branded artwork with 44px visible panels inside 52px images. Primary project destinations use acid green; secondary documentation and live-site destinations use outlined links. The six-category toolkit has three columns on desktop and a single column on phones, with a collapsible native skills table.
 
-All five remaining navigation destinations were clicked and reached their correct sections. Desktop 1280px and phone 390px/320px previews showed no page-wide overflow or broken images; mobile artwork and the skills disclosure were checked. Public repository destinations were checked against GitHub's API. Maskr's store and policy, CampusNest, and KreedaScore returned HTTP 200. LinkedIn still requires sign-in for independent content review. Em dash characters were removed from generated profile content and preview titles at Vaibhav's request. This remains a local draft.
+All five remaining navigation destinations were clicked and reached their correct sections. Desktop 1280px and phone 390px/320px previews showed no page-wide overflow or broken images; mobile artwork and the skills disclosure were checked. Public repository destinations were checked against GitHub's API. Maskr's store and policy, CampusNest, and KreedaScore returned HTTP 200. LinkedIn still requires sign-in for independent content review. Em dash characters were removed from generated profile content and preview titles at Vaibhav's request. These checks were performed before publication.
 
 ## Alignment review
 
@@ -121,3 +121,9 @@ Header name lines now have separate text bounds. Hero, project, education, and s
 CampusNest and KreedaScore now put the highlighted LIVE SITE destination first and REPOSITORY second. Their cards also open the live site, matching the primary action. Other project destinations are retained.
 
 Read-only browser geometry checks across 37 current artwork layouts found no text outside the SVG bounds or overlapping static text rectangles. Desktop and 390px/320px phone checks confirmed shared content edges, equal button widths and baselines, responsive assets, and no page-wide overflow or broken images. The preview fingerprints artwork URLs so cached SVG dimensions cannot conceal a rebuild. The geometry fixture and screenshots remain local, excluded from publication.
+
+## Publication verification · 10 October 2026
+
+Vaibhav authorised publication so this content appears when anyone visits his GitHub profile. The public [profile repository](https://github.com/ThomasShelby4477/ThomasShelby4477) was created and pushed, and the README was verified on the [logged-out profile Overview](https://github.com/ThomasShelby4477). All 32 README images loaded from the repository. The first [hosted statistics refresh](https://github.com/ThomasShelby4477/ThomasShelby4477/actions/runs/38058852721) completed successfully and committed updated assets. The workflow is scheduled daily at 07:53 IST (02:23 UTC). Sidebar settings and repository pins were not changed.
+
+The published headline uses “Ex-SOC Intern @ RailTel” and “Developer of Maskr”, as requested. Contacts are restricted to email, LinkedIn, GitHub, and Maskr. Vaibhav explicitly requested that his personal mobile number never be added. Published text/source contains no mobile-number literals or telephone links, and the résumé PDF and local screenshots are excluded.
