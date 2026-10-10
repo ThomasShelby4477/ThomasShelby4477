@@ -1,0 +1,35 @@
+{
+  "username": "ThomasShelby4477",
+  "updated": "2026-10-10",
+  "repositories": 10,
+  "stars": 1,
+  "joined": "2024",
+  "contributions": 175,
+  "contribution_scope": "Rolling year, as displayed on the logged-out GitHub profile",
+  "repository_scope": "Public, owned, non-fork repositories",
+  "language_percentages": {
+    "TypeScript": 54.30491847243428,
+    "Python": 20.594204485165942,
+    "JavaScript": 15.825177121883565,
+    "HTML": 4.084637603800193,
+    "Other": 5.191062316716014
+  },
+  "language_bytes": {
+    "TypeScript": 838311,
+    "Python": 317915,
+    "JavaScript": 244295,
+    "HTML": 63055,
+    "CSS": 62516,
+    "PLpgSQL": 7627,
+    "MDX": 5511,
+    "Batchfile": 2392,
+    "Shell": 1485,
+    "C++": 582,
+    "Procfile": 22
+  },
+  "sources": [
+    "https://api.github.com/users/ThomasShelby4477",
+    "https://api.github.com/users/ThomasShelby4477/repos",
+    "https://github.com/users/ThomasShelby4477/contributions"
+  ]
+}

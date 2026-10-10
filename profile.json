@@ -1,0 +1,92 @@
+{
+  "username": "ThomasShelby4477",
+  "display_name": "Vaibhav Yadav",
+  "headline": "Cybersecurity · Risk analytics · Software engineering",
+  "intro": "I work at the intersection of cybersecurity, operational risk, and software engineering. From SOC detection and logistics analytics to on-device privacy tools, I build systems that make complex work clearer and safer.",
+  "contacts": [
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/vaibhav082004/"
+    },
+    {
+      "label": "Email",
+      "url": "mailto:vaibhavya08@gmail.com"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Data Analyst Intern",
+      "organisation": "Delhivery Limited",
+      "period": "May 2026 – Present · Gurugram, India",
+      "highlights": [
+        "Develop risk and fraud detection models for logistics data, focusing on high-risk shipment anomalies and loss prevention.",
+        "Turn shipment tracking and telematics data into operational insights and process controls."
+      ]
+    },
+    {
+      "role": "SOC Intern",
+      "organisation": "RailTel Corporation of India Limited",
+      "period": "May 2025 – July 2025 · Gurugram, India",
+      "highlights": [
+        "Worked with Elastic SIEM across 500K+ daily security events; tuned EQL/KQL detection rules to reduce false positives by 15%.",
+        "Automated threat intelligence enrichment and supported incident response, SOC procedures, and MITRE ATT&CK-mapped reporting."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Maskr",
+      "url": "https://chromewebstore.google.com/detail/maskr-private-ai-leak-gua/adncldmdaamhlpcccigfhdipjhpicebe",
+      "category": "PRIVACY & SECURITY · PUBLISHED EXTENSION",
+      "description": "An on-device privacy guard that checks prompts and attachments for sensitive data before they reach AI chatbots. Published on the Chrome Web Store.",
+      "detail": "Combines local detection, masking, and image redaction for ChatGPT, Claude, Gemini, and Copilot.",
+      "stack": "JavaScript · Manifest V3 · ONNX Runtime Web · On-device inference",
+      "primary_label": "Chrome Web Store",
+      "extra_label": "Privacy policy",
+      "extra_url": "https://thomasshelby4477.github.io/maskr-privacy/"
+    },
+    {
+      "name": "Codebase Architect",
+      "repo": "CodeBase-Architect",
+      "category": "AI & DEVELOPER TOOLS",
+      "description": "An MCP server that gives AI assistants structural context about a codebase through AST parsing, dependency graphs, and semantic search.",
+      "detail": "Explore the architecture, local embedding pipeline, and eight codebase reasoning tools.",
+      "stack": "Python · Tree-sitter · SQLite · LanceDB · MCP",
+      "extra_label": "Architecture",
+      "extra_url": "https://github.com/ThomasShelby4477/CodeBase-Architect/blob/main/ARCHITECTURE.md"
+    },
+    {
+      "name": "CampusNest",
+      "repo": "campusnest",
+      "category": "FULL-STACK PRODUCT",
+      "description": "A student housing and roommate platform with listing discovery, verification workflows, compatibility matching, and real-time messaging.",
+      "detail": "Brings together authentication, private document access, maps, and payments in one product.",
+      "stack": "TypeScript · Next.js · React · Supabase · PostgreSQL",
+      "extra_label": "Visit website",
+      "extra_url": "https://campusnest-two.vercel.app"
+    },
+    {
+      "name": "KreedaScore",
+      "repo": "sports-week-score-app",
+      "category": "REAL-TIME APPLICATION",
+      "description": "A sports-event dashboard for scores, tournament brackets, and medal tallies, with dedicated organiser and admin workflows.",
+      "detail": "Connects a React interface to an Express backend, PostgreSQL, and live event updates.",
+      "stack": "JavaScript · React · Express · PostgreSQL",
+      "extra_label": "Visit website",
+      "extra_url": "https://kreedascore.vercel.app"
+    }
+  ],
+  "education": {
+    "institution": "National Forensic Sciences University, Delhi",
+    "qualification": "Integrated B.Tech–M.Tech · Computer Science Engineering",
+    "specialisation": "Cyber Security",
+    "period": "August 2022 – August 2027 (expected)",
+    "cgpa": "8.03"
+  },
+  "leadership": {
+    "role": "Technical Lead",
+    "organisation": "Parakram Sports Club, NFSU",
+    "period": "February 2026",
+    "description": "Led technical operations for university sports events and built KreedaScore for score tracking, schedules, and live updates."
+  }
+}

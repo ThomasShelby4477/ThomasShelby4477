@@ -1,0 +1,42 @@
+name: Refresh profile
+
+on:
+  schedule:
+    - cron: '23 2 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - profile.json
+      - scripts/**
+      - .github/workflows/profile.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Update public statistics and build profile
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 scripts/update_stats.py
+          python3 scripts/build_profile.py
+      - name: Commit refreshed assets
+        run: |
+          git add README.md assets/
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Refresh public profile statistics'
+          git push
