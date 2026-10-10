@@ -8,8 +8,8 @@ publishing zeros or partial results.
 """
 import argparse
 from collections import Counter
-from concurrent.futures import ThreadPoolExecutor
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
+from html.parser import HTMLParser
 import html
 import json
 import os
@@ -17,7 +17,7 @@ from pathlib import Path
 import re
 import urllib.request
 
-from build_profile import THEMES, svg, text
+from visuals import THEMES, activity, overview
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / 'assets'
@@ -34,6 +34,57 @@ def fetch(url):
         return response.read().decode()
 
 
+
+class ContributionParser(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.days = {}
+        self.tooltip = None
+        self.tooltip_text = []
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if tag == 'td' and attrs.get('data-date'):
+            self.days[attrs['id']] = {'date': attrs['data-date'], 'level': int(attrs['data-level'])}
+        if tag == 'tool-tip' and attrs.get('for') in self.days:
+            self.tooltip = attrs['for']
+            self.tooltip_text = []
+
+    def handle_data(self, data):
+        if self.tooltip:
+            self.tooltip_text.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == 'tool-tip' and self.tooltip:
+            value = re.search(r'(No|[\d,]+) contributions?', ''.join(self.tooltip_text))
+            if value:
+                self.days[self.tooltip]['count'] = 0 if value[1] == 'No' else int(value[1].replace(',', ''))
+            self.tooltip = None
+
+
+def calendar_metrics(markup, expected_total):
+    parser = ContributionParser()
+    parser.feed(markup)
+    days = sorted(parser.days.values(), key=lambda d: d['date'])
+    if not days or any('count' not in d or d['level'] not in range(5) for d in days):
+        raise ValueError('Incomplete public contribution calendar; preserving previous assets.')
+    dates = [date.fromisoformat(d['date']) for d in days]
+    if dates[0].weekday() != 6 or any(b-a != timedelta(days=1) for a,b in zip(dates,dates[1:])):
+        raise ValueError('Contribution dates are not a complete calendar.')
+    if sum(d['count'] for d in days) != expected_total:
+        raise ValueError('Calendar disagrees with public headline count; preserving previous assets.')
+    months = Counter()
+    streak = longest = active = 0
+    for d in days:
+        months[d['date'][:7]] += d['count']
+        streak = streak + 1 if d['count'] else 0
+        longest = max(longest, streak)
+        active += bool(d['count'])
+    return {'calendar': days, 'monthly_contributions': dict(sorted(months.items())),
+            'active_days': active, 'longest_streak': longest, 'current_streak': streak,
+            'most_active_day': max(days, key=lambda d: d['count'])}
+
+
 def collect(username):
     user = json.loads(fetch(f'https://api.github.com/users/{username}'))
     repos = []
@@ -44,14 +95,6 @@ def collect(username):
         if len(batch) < 100:
             break
         page += 1
-    languages = Counter()
-    with ThreadPoolExecutor(max_workers=4) as pool:
-        for values in pool.map(lambda r: json.loads(fetch(r['languages_url'])), repos):
-            languages.update(values)
-    language_total = sum(languages.values())
-    percentages = {name: 100 * size / language_total for name, size in languages.most_common(4)} if language_total else {}
-    if len(languages) > 4:
-        percentages['Other'] = 100 - sum(percentages.values())
     # Fetch exactly what logged-out profile visitors can already see.
     markup = fetch(f'https://github.com/users/{username}/contributions')
     plain = re.sub(r'\s+', ' ', html.unescape(re.sub('<[^>]+>', ' ', markup)))
@@ -63,47 +106,15 @@ def collect(username):
         'updated': datetime.now(timezone.utc).strftime('%Y-%m-%d'),
         'repositories': len(repos),
         'stars': sum(r['stargazers_count'] for r in repos),
+        'followers': user['followers'],
+        'forks': sum(r['forks_count'] for r in repos),
+        **calendar_metrics(markup, int(match.group(1).replace(',', ''))),
         'joined': user['created_at'][:4],
         'contributions': int(match.group(1).replace(',', '')),
         'contribution_scope': 'Rolling year, as displayed on the logged-out GitHub profile',
         'repository_scope': 'Public, owned, non-fork repositories',
-        'language_percentages': percentages,
-        'language_bytes': dict(languages.most_common()),
         'sources': [f'https://api.github.com/users/{username}', f'https://api.github.com/users/{username}/repos', f'https://github.com/users/{username}/contributions'],
     }
-
-
-def card(data, theme, mobile):
-    c = THEMES[theme]
-    w, h = (420, 474) if mobile else (960, 304)
-    x = 28 if mobile else 44
-    out = text(x, 42, 'GITHUB / ACTIVITY & CODE', 12, c['accent'], 600, 'letter-spacing="1.4"')
-    metrics = [(data['contributions'], 'Contributions', 'Last 12 months'), (data['repositories'], 'Repositories', 'Public · owned'), (data['stars'], 'Stars earned', 'Public repositories')]
-    for i, (value, label, detail) in enumerate(metrics):
-        mx = x + i * (125 if mobile else 161)
-        out += text(mx, 107 if mobile else 140, f'{value:,}', 39 if mobile else 49, c['fg'], 600, 'letter-spacing="-1"')
-        out += text(mx, 133 if mobile else 173, label, 12 if mobile else 14, c['fg'], 600)
-        out += text(mx, 153 if mobile else 197, detail, 10 if mobile else 11, c['muted'])
-    if mobile:
-        out += f'<path d="M28 183h364" stroke="{c["line"]}"/>'
-        lx, ly, barw = 28, 220, 250
-    else:
-        out += f'<path d="M543 75v157" stroke="{c["line"]}"/>'
-        lx, ly, barw = 581, 88, 216
-    out += text(lx, ly, 'REPOSITORY LANGUAGES', 11, c['muted'], 600, 'letter-spacing="1"')
-    colors = [c['accent'], c['warm'], '#64a2b4', '#b8a2cb', c['muted']]
-    for i, (language, percentage) in enumerate(data['language_percentages'].items()):
-        y = ly + 28 + i * 30
-        out += text(lx, y, language, 12, c['fg'])
-        bx = lx + 98
-        bw = barw - 98
-        out += f'<rect x="{bx}" y="{y-8}" width="{bw}" height="6" rx="3" fill="{c["line"]}"/>'
-        out += f'<rect x="{bx}" y="{y-8}" width="{bw*percentage/100:.2f}" height="6" rx="3" fill="{colors[i]}"/>'
-        out += text(lx + barw + 12, y, f'{percentage:.1f}%', 11, c['muted'])
-    out += text(x, h - 43, f'On GitHub since {data["joined"]}', 11, c['muted'])
-    out += text(x, h - 23, f'Public snapshot · updated {data["updated"]} UTC', 10 if mobile else 11, c['muted'])
-    desc = f'{data["contributions"]} contributions displayed on the public GitHub profile in the last year, {data["repositories"]} public owned repositories, and {data["stars"]} stars. Repository languages are measured by code bytes.'
-    return svg(w, h, out, 'GitHub activity and repository languages', desc, theme)
 
 
 def main():
@@ -112,7 +123,9 @@ def main():
     args = parser.parse_args()
     username = json.loads((ROOT / 'profile.json').read_text())['username']
     data = json.loads((ASSETS / 'stats.json').read_text()) if args.from_snapshot else collect(username)
-    outputs = {f'activity-{theme}{"-mobile" if mobile else ""}.svg': card(data, theme, mobile) for theme in THEMES for mobile in [False, True]}
+    outputs = {f'{stem}-{theme}{"-mobile" if mobile else ""}.svg': renderer(data, theme, mobile)
+               for stem, renderer in [('activity', activity), ('overview', overview)]
+               for theme in THEMES for mobile in [False, True]}
     outputs['stats.json'] = json.dumps(data, indent=2) + '\n'
     ASSETS.mkdir(exist_ok=True)
     for filename, value in outputs.items():

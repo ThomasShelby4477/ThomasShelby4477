@@ -43,7 +43,14 @@
       "stack": "JavaScript · Manifest V3 · ONNX Runtime Web · On-device inference",
       "primary_label": "Chrome Web Store",
       "extra_label": "Privacy policy",
-      "extra_url": "https://thomasshelby4477.github.io/maskr-privacy/"
+      "extra_url": "https://thomasshelby4477.github.io/maskr-privacy/",
+      "icon": "maskr",
+      "visual_headline": "On-device privacy for AI conversations.",
+      "visual_detail": "Local detection, masking, and attachment redaction.",
+      "tech_icons": [
+        "javascript",
+        "chrome"
+      ]
     },
     {
       "name": "Codebase Architect",
@@ -53,7 +60,13 @@
       "detail": "Explore the architecture, local embedding pipeline, and eight codebase reasoning tools.",
       "stack": "Python · Tree-sitter · SQLite · LanceDB · MCP",
       "extra_label": "Architecture",
-      "extra_url": "https://github.com/ThomasShelby4477/CodeBase-Architect/blob/main/ARCHITECTURE.md"
+      "extra_url": "https://github.com/ThomasShelby4477/CodeBase-Architect/blob/main/ARCHITECTURE.md",
+      "icon": "python",
+      "visual_headline": "Structural context for AI coding assistants.",
+      "visual_detail": "AST parsing, semantic retrieval, and dependency graphs.",
+      "tech_icons": [
+        "python"
+      ]
     },
     {
       "name": "CampusNest",
@@ -63,7 +76,15 @@
       "detail": "Brings together authentication, private document access, maps, and payments in one product.",
       "stack": "TypeScript · Next.js · React · Supabase · PostgreSQL",
       "extra_label": "Visit website",
-      "extra_url": "https://campusnest-two.vercel.app"
+      "extra_url": "https://campusnest-two.vercel.app",
+      "icon": "nextdotjs",
+      "visual_headline": "Student housing, with trust built into the workflow.",
+      "visual_detail": "Listings, verification, roommate matching, and messaging.",
+      "tech_icons": [
+        "typescript",
+        "nextdotjs",
+        "supabase"
+      ]
     },
     {
       "name": "KreedaScore",
@@ -73,7 +94,15 @@
       "detail": "Connects a React interface to an Express backend, PostgreSQL, and live event updates.",
       "stack": "JavaScript · React · Express · PostgreSQL",
       "extra_label": "Visit website",
-      "extra_url": "https://kreedascore.vercel.app"
+      "extra_url": "https://kreedascore.vercel.app",
+      "icon": "javascript",
+      "visual_headline": "Live scores. Clear brackets. One event dashboard.",
+      "visual_detail": "Sports results, medal tallies, and organiser workflows.",
+      "tech_icons": [
+        "react",
+        "javascript",
+        "postgresql"
+      ]
     }
   ],
   "education": {
@@ -81,7 +110,19 @@
     "qualification": "Integrated B.Tech–M.Tech · Computer Science Engineering",
     "specialisation": "Cyber Security",
     "period": "August 2022 – August 2027 (expected)",
-    "cgpa": "8.03"
+    "cgpa": "8.03",
+    "degrees": [
+      {
+        "qualification": "B.Tech · Computer Science Engineering",
+        "status": "Completed"
+      },
+      {
+        "qualification": "M.Tech · Computer Science Engineering",
+        "status": "In progress",
+        "expected": "August 2027"
+      }
+    ],
+    "status_note": "B.Tech completed; M.Tech started. Updated directly by Vaibhav on 10 October 2026."
   },
   "leadership": {
     "role": "Technical Lead",

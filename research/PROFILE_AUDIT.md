@@ -15,22 +15,25 @@ The account handle gives little information about Vaibhav's professional identit
 - [Sebastián Ramírez](https://github.com/tiangolo): introduces himself through the tools he has built, then provides direct contact links. Adopt a clear connection between the person and their work.
 - [Anurag Hazra](https://github.com/anuraghazra): connects professional experience with concrete project outcomes. Adopt résumé-backed experience and measured claims where the résumé provides them.
 
+- [Aarsh Chaurasia](https://github.com/aarshx05), supplied by Vaibhav: current-focus context, grouped skills, direct branded contact links, and a dedicated statistics section. Adopt those organisational ideas with original typography, palette, artwork, and project cards. No biography, credentials, achievements, or wording copied.
+
 These examples inform the hierarchy. Their copy, artwork, and achievements are not reused.
 
-GitHub is a Markdown surface with sanitised HTML, rather than a freeform website. The draft uses native headings, links, a skills table, a collapsible archive, and SVG images. Custom artwork is restricted to the header and activity card; important project and experience text remains readable and searchable.
+GitHub is a Markdown surface with sanitised HTML, rather than a freeform website. The draft uses native headings, links, a skills table, a collapsible archive, and SVG images. Custom artwork covers the header, branded links, project cards, toolkit, education, statistics overview, and activity dashboard. Project summaries, experience, skills, degree status, and contacts also remain native, searchable text. All major cards have phone/desktop SVGs. Artwork deliberately stays dark in either GitHub theme; the surrounding GitHub shell follows the visitor’s settings.
 
 ## Recommended order
 
 1. Name, professional positioning, custom header, short navigation.
-2. Brief introduction and immediate LinkedIn/email links.
-3. Selected work: Maskr, Codebase Architect, CampusNest, KreedaScore.
-4. Experience: Delhivery, RailTel, and Parakram technical leadership.
-5. Skills grouped by security, engineering, data, and AI.
-6. Education and the CEH qualification explicitly marked in progress.
-7. GitHub activity with clear data scope.
-8. Contact links and a concise invitation to connect.
+2. Brief introduction, branded LinkedIn/Gmail/GitHub/Maskr links, and a compact statistics overview.
+3. Current focus: role, building interests, and M.Tech studies.
+4. Selected work: Maskr, Codebase Architect, CampusNest, KreedaScore.
+5. Experience: Delhivery, RailTel, and Parakram technical leadership.
+6. Skills grouped by security, engineering, data, and AI.
+7. Education and the CEH qualification explicitly marked in progress.
+8. GitHub activity with clear data scope.
+9. Contact links and a concise invitation to connect.
 
-Projects appear early because visitors can inspect them directly. Employment and education add context. Activity appears after the work rather than dominating the introduction.
+Projects appear early because visitors can inspect them directly. Employment and education add context. The compact numbers appear near the introduction; the detailed activity dashboard follows the work and background.
 
 ## Project evidence
 
@@ -44,7 +47,9 @@ Projects appear early because visitors can inspect them directly. Employment and
 | SecureVault | [Repository](https://github.com/ThomasShelby4477/securevault), crypto engine, file routes, requirements | Include as an encryption/file-management project. No security certification or audit claim. |
 | Chess Analyser Pro | [Repository](https://github.com/ThomasShelby4477/Chess_Analyser_Pro), README, repository tree | Include as an experiment. The main analyser and pretrained model named by the README were absent from the inspected tree. |
 
-Employment, dates, education, the 500K+ daily-event figure, and the 15% false-positive reduction come from the supplied résumé. They are user-supplied professional claims, not independently verified employer records. LinkedIn's public URL was taken from the résumé; the page redirected to a sign-in wall, so its contents were not independently reviewed.
+Vaibhav subsequently clarified that B.Tech is completed and M.Tech has started. The draft now displays those statuses separately. No B.Tech completion date was inferred; the résumé’s expected August 2027 end date is retained for M.Tech.
+
+Employment, dates, original education details, the 500K+ daily-event figure, and the 15% false-positive reduction come from the supplied résumé. They are user-supplied professional claims, not independently verified employer records. LinkedIn's public URL was taken from the résumé; the page redirected to a sign-in wall, so its contents were not independently reviewed.
 
 ## Repository presentation improvements
 
@@ -73,7 +78,7 @@ Recommended pin order: Codebase Architect, CampusNest, KreedaScore, Satellite Te
 
 The upstream [GitHub Readme Stats](https://github.com/anuraghazra/github-readme-stats) README now states that the project is no longer maintained, and describes the shared public service as best effort. This draft instead stores its own SVG cards in the profile repository.
 
-The scheduled workflow retrieves only public repository metrics and the publicly displayed contribution total. It uses GitHub's built-in workflow token for API capacity; no external stats service or personal token is required. Repository enumeration explicitly excludes private repos and forks. Language percentages are byte counts, not measures of proficiency. The contribution count uses the public profile's rolling year, including any activity GitHub already elects to display publicly.
+The scheduled workflow retrieves public repository metrics and the full publicly displayed contribution calendar. Calendar cells are matched to GitHub tooltips for exact daily counts. The collected calendar must contain consecutive dates and reconcile with the headline total before any assets are replaced. It derives active days, calendar-day streaks, a peak day, and monthly totals, including partial boundary months. The chart does not imply continuous daily activity. It uses GitHub's built-in workflow token for API capacity; no external stats service or personal token is required. Repository enumeration explicitly excludes private repos and forks. The contribution count uses the public profile's rolling year, including any activity GitHub already elects to display publicly.
 
 Fetch failures fail the workflow and retain the previous committed cards. Snapshot dates stay visible. The daily refresh has been prepared and the script has run locally; the hosted schedule has not run because the profile repository is not yet published.
 
@@ -85,6 +90,10 @@ Fetch failures fail the workflow and retain the previous committed cards. Snapsh
 
 ## Validation boundary
 
-Completed checks: GitHub Markdown API rendering; all eight SVG assets parsed as XML with accessibility titles and descriptions; live public statistics collection and offline rebuilding; Python script compilation; workflow YAML parsing; visual inspection at 1280px desktop and 390px phone widths in light and dark themes. The browser confirmed both image assets loaded at each tested breakpoint and there was no page-wide horizontal overflow. The activity navigation reached its heading. The complete desktop page was also visually inspected.
+Completed checks: GitHub Markdown API rendering; all generated SVG assets parsed as XML with accessibility titles; live public statistics collection and offline rebuilding; Python script compilation; workflow YAML parsing; visual inspection at 1280px desktop and 390px phone widths in light and dark themes. The browser confirmed all responsive image assets loaded at each tested breakpoint and there was no page-wide horizontal overflow. The activity navigation reached its heading. The complete desktop page was also visually inspected.
 
 The preview is a local approximation using GitHub-rendered Markdown and GitHub-style CSS. Publication is required to verify the actual profile shell, sidebar, repository pins, remote asset URLs, and hosted GitHub Actions. Nothing has been published or changed on the account.
+
+## Visual refresh validation · 10 October 2026
+
+The brutalist dark refresh uses near-black (#10120f), off-white (#f2f3e8), acid green (#c6ff00), and burnt orange (#ff773d), with square panels, heavy borders, and bold monospace artwork. The refresh includes branded contact badges, original project cards, a skills table, separate degree-status panels, a public contribution heatmap and a full-width monthly chart. Live collection reconciled 175 contributions across 19 active days, a longest streak of 3 days, and a peak of 42 contributions. Ten public owned repositories earned one star. Language distribution was removed at Vaibhav’s request. The calendar parser was checked against year-boundary, zero-activity, and incomplete-data cases. SVG XML parsing, GitHub Markdown rendering, and phone/desktop visual checks pass. Remote publication and the hosted workflow remain unverified.
