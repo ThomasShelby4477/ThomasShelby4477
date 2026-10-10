@@ -19,7 +19,7 @@ The account handle gives little information about Vaibhav's professional identit
 
 These examples inform the hierarchy. Their copy, artwork, and achievements are not reused.
 
-GitHub is a Markdown surface with sanitised HTML, rather than a freeform website. The draft uses native headings, links, a skills table, a collapsible archive, and SVG images. Custom artwork covers the header, branded links, project cards, toolkit, education, statistics overview, and activity dashboard. Project summaries, experience, skills, degree status, and contacts also remain native, searchable text. All major cards have phone/desktop SVGs. Artwork deliberately stays dark in either GitHub theme; the surrounding GitHub shell follows the visitor’s settings.
+GitHub is a Markdown surface with sanitised HTML, rather than a freeform website. The draft uses native headings, links, a skills table, a collapsible archive, and SVG images. Custom artwork covers the header, branded links, project cards, toolkit, education, statistics overview, and activity dashboard. Project summaries, skills, degree status, and contacts also remain native, searchable text. All major cards have phone/desktop SVGs. Artwork deliberately stays dark in either GitHub theme; the surrounding GitHub shell follows the visitor’s settings.
 
 ## Recommended order
 
@@ -27,13 +27,12 @@ GitHub is a Markdown surface with sanitised HTML, rather than a freeform website
 2. Brief introduction, branded LinkedIn/Gmail/GitHub/Maskr links, and a compact statistics overview.
 3. Current focus: role, building interests, and M.Tech studies.
 4. Selected work: Maskr, Codebase Architect, CampusNest, KreedaScore.
-5. Experience: Delhivery, RailTel, and Parakram technical leadership.
-6. Skills grouped by security, engineering, data, and AI.
-7. Education and the CEH qualification explicitly marked in progress.
-8. GitHub activity with clear data scope.
-9. Contact links and a concise invitation to connect.
+5. Skills grouped by security, engineering, data, and AI.
+6. Education and the CEH qualification explicitly marked in progress.
+7. GitHub activity with clear data scope.
+8. Contact links and a concise invitation to connect.
 
-Projects appear early because visitors can inspect them directly. Employment and education add context. The compact numbers appear near the introduction; the detailed activity dashboard follows the work and background.
+Projects appear early because visitors can inspect them directly. Current focus and education add context. The compact numbers appear near the introduction; the detailed activity dashboard follows the work and background. Vaibhav requested removal of the entire Experience section and its navigation link. The supplied introduction remains one native paragraph beneath navigation, wrapping naturally on smaller screens.
 
 ## Project evidence
 
@@ -87,6 +86,7 @@ Fetch failures fail the workflow and retain the previous committed cards. Snapsh
 - [Managing your profile README](https://docs.github.com/en/account-and-profile/how-tos/profile-customization/managing-your-profile-readme): the public repository must match the username and have a root README.
 - [Pinning items](https://docs.github.com/en/account-and-profile/how-tos/profile-customization/pinning-items-to-your-profile): pin selection and ordering.
 - [GitHub Markdown CSS](https://github.com/sindresorhus/github-markdown-css): local preview styling. The Markdown itself is rendered by GitHub's API.
+- [Primer button accessibility](https://primer.style/product/components/button/accessibility/): clear labels and generous targets inform the action artwork. Destinations remain native links with descriptive image alternatives.
 
 ## Validation boundary
 
@@ -105,3 +105,9 @@ The header now types the name once, then cycles three taglines: Security × Soft
 A prefers-reduced-motion rule reveals the complete name and a static tagline. A local inspection fixture activates those same rules for visual checking without changing the user's system preferences. The generated animation timelines and SVG XML were validated; desktop/phone preview rendering and the static fallback were inspected. Actual GitHub asset delivery remains pending publication.
 
 References: [Readme Typing SVG](https://github.com/DenverCoder1/readme-typing-svg) demonstrates animated SVGs in profile READMEs; [MDN SVG animation](https://developer.mozilla.org/en-US/docs/Web/SVG/Guides/SVG_animation_with_SMIL) documents the native timing mechanism, and [MDN reduced motion](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-reduced-motion) documents the media query. The animation here is original code, without source copied from the example.
+
+## Spacing, links, and final content
+
+Artwork now sits in native paragraphs, giving project images a verified 16px gap before their descriptions under GitHub-style Markdown rendering. Project interiors have larger insets, descriptions and actions are separated, and project groups have consistent breathing room. Navigation and contact links use square branded artwork with 44px visible panels inside 52px images. Primary project destinations use acid green; secondary documentation and live-site destinations use outlined links. The six-category toolkit has three columns on desktop and a single column on phones, with a collapsible native skills table.
+
+All five remaining navigation destinations were clicked and reached their correct sections. Desktop 1280px and phone 390px/320px previews showed no page-wide overflow or broken images; mobile artwork and the skills disclosure were checked. Public repository destinations were checked against GitHub's API. Maskr's store and policy, CampusNest, and KreedaScore returned HTTP 200. LinkedIn still requires sign-in for independent content review. Em dash characters were removed from generated profile content and preview titles at Vaibhav's request. This remains a local draft.

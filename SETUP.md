@@ -13,6 +13,8 @@ python3 scripts/update_stats.py
 python3 scripts/build_profile.py
 ```
 
+`show_experience` is currently `false`, so the entire Experience section and its navigation item are omitted from the generated README.
+
 For an offline rebuild from the last successful public snapshot:
 
 ```sh

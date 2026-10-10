@@ -129,5 +129,6 @@
     "organisation": "Parakram Sports Club, NFSU",
     "period": "February 2026",
     "description": "Led technical operations for university sports events and built KreedaScore for score tracking, schedules, and live updates."
-  }
+  },
+  "show_experience": false
 }

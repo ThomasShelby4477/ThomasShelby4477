@@ -115,18 +115,18 @@ def hero(config,theme,mobile):
 
 
 def project(p,index,theme,mobile):
-    c=THEMES[theme];accent=c['accent'] if index%2==0 else c['warm'];w,h=(420,228) if mobile else (960,207);x=26 if mobile else 32
+    c=THEMES[theme];accent=c['accent'] if index%2==0 else c['warm'];w,h=(420,276) if mobile else (960,240);x=24 if mobile else 32
     category=['PRIVACY ENGINEERING','AI DEVELOPER TOOLS','FULL-STACK PRODUCT','REAL-TIME APPLICATION'][index]
-    b=rect(12,12,w-24,23,accent)+text(x,28,f'{index+1:02d} / {category}',9 if mobile else 11,c['bg'],700,'letter-spacing=".5"')
-    b+=rect(x,43,42,42,c['bg'],c['line'],11)+icon(p['icon'],x+8,51,26,accent)
-    b+=text(x+56,72,p['name'].upper(),22 if mobile else 31,c['fg'],900,'letter-spacing="-.6"')
+    b=rect(16,16,w-32,24,accent)+text(x,32,f'{index+1:02d} / {category}',9 if mobile else 11,c['bg'],700,'letter-spacing=".5"')
+    b+=rect(x,56,42,42,c['bg'],c['line'],11)+icon(p['icon'],x+8,64,26,accent)
+    b+=text(x+56,85,p['name'].upper(),22 if mobile else 31,c['fg'],900,'letter-spacing="-.6"')
     head=textwrap.wrap(p['visual_headline'],width=34 if mobile else 59)
-    y=115
+    y=130
     for line in head:
         b+=text(x,y,line,15 if mobile else 18,c['fg'],500);y+=23
     for line in textwrap.wrap(p['visual_detail'],width=46 if mobile else 76):
         b+=text(x,y+3,line,12 if mobile else 14,c['muted']);y+=20
-    y=h-22
+    y=h-28
     ix=x
     for name in p['tech_icons']:
         b+=icon(name,ix,y-13,17,accent);ix+=27
@@ -134,9 +134,9 @@ def project(p,index,theme,mobile):
     label=' · '.join(short[:3])
     b+=text(ix+4,y,label,8 if mobile else 11,c['muted'])
     if not mobile:
-        b+=rect(777,52,139,137,accent)
-        b+=icon(p['icon'],818,75,58,c['bg'])
-        b+=text(847,174,'OPEN ↗',12,c['bg'],900,'text-anchor="middle"')
+        b+=rect(777,64,139,144,accent)
+        b+=icon(p['icon'],818,87,58,c['bg'])
+        b+=text(847,190,'OPEN ↗',12,c['bg'],900,'text-anchor="middle"')
     return svg(w,h,b,p['name'],p['description']+' '+p['detail']+' Stack: '+p['stack'],theme)
 
 
@@ -213,13 +213,34 @@ def activity(data,theme,mobile):
 
 
 def toolkit(theme,mobile):
-    c=THEMES[theme];w,h=(420,188) if mobile else (960,100);b=''
-    labels=[('python','Python'),('typescript','TypeScript'),('javascript','JavaScript'),('react','React'),('nextdotjs','Next.js'),('postgresql','PostgreSQL'),('supabase','Supabase'),('github','GitHub')]
-    colors=[c['blue'],c['blue'],c['warm'],c['accent'],c['fg'],c['blue'],c['accent'],c['fg']]
-    for i,(name,label) in enumerate(labels):
-        cx=53+(i%4)*104 if mobile else 60+i*120;y=20+(i//4)*88 if mobile else 21
-        b+=icon(name,cx-17,y,34,colors[i])+text(cx,y+56,label,11,c['muted'],500,'text-anchor="middle"')
-    return svg(w,h,b,'Core engineering technologies',', '.join(label for _,label in labels),theme)
+    c=THEMES[theme];w,h=(420,924) if mobile else (960,360);b=''
+    groups=[
+        ('DETECTION & RESPONSE',[('Elastic SIEM',None),('EQL / KQL',None),('Threat intel',None),('Incident response',None)]),
+        ('APPLICATION SECURITY',[('Burp Suite',None),('OWASP ZAP',None),('Nuclei',None),('Nmap',None)]),
+        ('PROGRAMMING',[('Python','python'),('TypeScript','typescript'),('JavaScript','javascript'),('SQL',None)]),
+        ('WEB & APIs',[('React','react'),('Next.js','nextdotjs'),('Express',None),('Flask','python')]),
+        ('DATA & AI',[('PostgreSQL','postgresql'),('Supabase','supabase'),('Tree-sitter',None),('MCP',None)]),
+        ('TOOLS & INTERFACES',[('GitHub','github'),('Docker',None),('Linux',None),('Streamlit',None)]),
+    ]
+    cellw=372 if mobile else 293.33
+    cellh=136 if mobile else 148
+    for i,(title,items) in enumerate(groups):
+        cx=24 if mobile else 24+(i%3)*(cellw+16)
+        cy=24+i*(cellh+12) if mobile else 24+(i//3)*(cellh+16)
+        accent=c['accent'] if i%2==0 else c['warm']
+        b+=rect(cx,cy,cellw,cellh,c['bg'],c['line'])
+        b+=text(cx+16,cy+30,title,14,accent,700)
+        px=cx+16;py=cy+50
+        for label,brand in items:
+            labelsize=14 if mobile else 12
+            bw=len(label)*labelsize*.6+20+(24 if brand else 0)
+            if px+bw>cx+cellw-16:
+                px=cx+16;py+=38
+            b+=rect(round(px,2),py,round(bw,2),28,c['panel'],c['line'])
+            if brand:b+=icon(brand,px+8,py+6,16,c['fg'])
+            b+=text(px+(32 if brand else 10),py+18,label,labelsize,c['fg'],500)
+            px+=bw+8
+    return svg(w,h,b,'Toolkit by area','Detection and response: Elastic SIEM, EQL/KQL, threat intelligence, incident response. Application security: Burp Suite, OWASP ZAP, Nuclei, Nmap. Programming: Python, TypeScript, JavaScript, SQL. Web and APIs: React, Next.js, Express, Flask. Data and AI: PostgreSQL, Supabase, Tree-sitter, MCP. Tools and interfaces: GitHub, Docker, Linux, Streamlit.',theme)
 
 
 def education(config,theme,mobile):
@@ -233,15 +254,29 @@ def education(config,theme,mobile):
     return svg(w,h,b,'Education status','B.Tech in Computer Science Engineering completed. M.Tech in Computer Science Engineering in progress, with expected completion in August 2027. Cyber Security specialisation at National Forensic Sciences University, Delhi.',theme)
 
 
+def link_artwork(label,width,brand=None,primary=False,font_size=12):
+    c=DARK;h=52;fill=c['accent'] if primary else c['bg'];fg=c['bg'] if primary else c['fg']
+    body=rect(.5,4.5,width-1,43,fill,c['accent'] if primary else c['line'])
+    tx=14
+    if brand:
+        if brand=='linkedin':
+            body+=rect(13,14,22,22,'#0a66c2')+icon(brand,17,18,14,'#ffffff')
+        else:body+=icon(brand,14,15,20,'#ff918c' if brand=='gmail' else fg)
+        tx=46
+    body+=text(tx,30,label,font_size,fg,700)
+    body+=text(width-12,30,'↗',font_size,fg,700,'text-anchor="end"')
+    return f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{h}" viewBox="0 0 {width} {h}" role="img"><title>{html.escape(label)}</title><g font-family="ui-monospace,Menlo,Consolas,monospace">{body}</g></svg>'
+
+
 def contact_badge(name,label):
-    w={'linkedin':132,'gmail':122,'github':126,'maskr':125}[name];h=38
-    b=rect(.5,.5,w-1,h-1,'#10120f','#f2f3e8',0)
-    if name=='linkedin':b+=rect(11,8,22,22,'#0a66c2',r=4)+icon(name,15,12,14,'#ffffff')
-    elif name=='gmail':b+=icon(name,11,10,22,'#ff918c')
-    elif name=='maskr':b+=icon(name,11,8,22,'#c6ff00')
-    else:b+=icon(name,11,9,21,'#f2f3e8')
-    b+=text(43,24,label,11,'#f2f3e8',700)
-    return f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img"><title>{html.escape(label)}</title><g font-family="ui-monospace,Menlo,Consolas,monospace">{b}</g></svg>'
+    return link_artwork(label,156,name)
+
+
+def navigation_badge(label):
+    width=102;h=52;c=DARK
+    body=rect(.5,4.5,width-1,43,c['bg'],c['line'])
+    body+=text(width/2,30,label,12,c['fg'],700,'text-anchor="middle"')
+    return f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{h}" viewBox="0 0 {width} {h}" role="img"><title>{html.escape(label)}</title><g font-family="ui-monospace,Menlo,Consolas,monospace">{body}</g></svg>'
 
 
 def build_static(config):
@@ -250,5 +285,18 @@ def build_static(config):
     write_variants('education',lambda t,m:education(config,t,m))
     for i,p in enumerate(config['projects']):
         write_variants(f'project-{i+1}',lambda t,m,i=i,p=p:project(p,i,t,m))
-    for name,label in [('linkedin','LinkedIn ↗'),('gmail','Gmail ↗'),('github','GitHub ↗'),('maskr','Maskr ↗')]:
+    for name,label in [('linkedin','LINKEDIN'),('gmail','GMAIL'),('github','GITHUB'),('maskr','MASKR')]:
         (ASSETS/f'connect-{name}.svg').write_text(contact_badge(name,label))
+    for name,label in [('work','WORK ↓'),('toolkit','TOOLKIT ↓'),('education','EDUCATION'),('activity','ACTIVITY ↓'),('connect','CONNECT ↓')]:
+        (ASSETS/f'nav-{name}.svg').write_text(navigation_badge(label))
+    if config.get('show_experience',True):
+        (ASSETS/'nav-experience.svg').write_text(navigation_badge('EXPERIENCE'))
+    else:
+        (ASSETS/'nav-experience.svg').unlink(missing_ok=True)
+    for i,p in enumerate(config['projects'],1):
+        label,brand=('CHROME STORE','chrome') if i==1 else ('REPOSITORY','github')
+        (ASSETS/f'project-{i}-primary.svg').write_text(link_artwork(label,168,brand,True))
+        label='POLICY' if i==1 else 'ARCHITECTURE' if i==2 else 'LIVE SITE'
+        (ASSETS/f'project-{i}-secondary.svg').write_text(link_artwork(label,148))
+    (ASSETS/'activity-calendar.svg').write_text(link_artwork('CALENDAR',156,primary=True))
+    (ASSETS/'activity-repositories.svg').write_text(link_artwork('REPOSITORIES',184,'github'))
