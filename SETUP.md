@@ -15,6 +15,8 @@ python3 scripts/build_profile.py
 
 `show_experience` is currently `false`, so the entire Experience section and its navigation item are omitted from the generated README.
 
+`intro_headline` controls the centred professional introduction. `show_past_work` is `true`; roles marked `past_role` and the leadership record appear in a compact disclosure below Current focus.
+
 For an offline rebuild from the last successful public snapshot:
 
 ```sh
@@ -34,6 +36,8 @@ python3 -m http.server 8765 --bind 127.0.0.1
 ```
 
 Open `http://127.0.0.1:8765/preview/dark.html` or the light variant. Preview files and source research downloads are ignored by Git. The preview uses GitHub's Markdown renderer; its surrounding page is a local approximation.
+
+Preview image URLs include content fingerprints so rebuilds display current artwork rather than cached SVGs.
 
 ## Publication
 

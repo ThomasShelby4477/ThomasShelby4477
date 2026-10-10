@@ -9,20 +9,32 @@
 </p>
 
 <p align="center">
-  <a href="#selected-work"><img src="assets/nav-work.svg" height="52" alt="Selected work"></a> &nbsp;
-  <a href="#toolkit"><img src="assets/nav-toolkit.svg" height="52" alt="Toolkit"></a> &nbsp;
-  <a href="#education"><img src="assets/nav-education.svg" height="52" alt="Education"></a> &nbsp;
-  <a href="#github-activity"><img src="assets/nav-activity.svg" height="52" alt="GitHub activity"></a> &nbsp;
+  <a href="#selected-work"><img src="assets/nav-work.svg" height="52" alt="Selected work"></a>
+  <a href="#toolkit"><img src="assets/nav-toolkit.svg" height="52" alt="Toolkit"></a>
+  <a href="#education"><img src="assets/nav-education.svg" height="52" alt="Education"></a>
+  <a href="#github-activity"><img src="assets/nav-activity.svg" height="52" alt="GitHub activity"></a>
   <a href="#connect"><img src="assets/nav-connect.svg" height="52" alt="Connect"></a>
 </p>
 
 
-I work at the intersection of cybersecurity, operational risk, and software engineering. From SOC detection and logistics analytics to on-device privacy tools, I build systems that make complex work clearer and safer.
+<hr>
+
+<h3 align="center">Data Analyst Intern @ Delhivery | Former SOC Intern @ RailTel
+<br>
+M.Tech Student | Developer of Maskr</h3>
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/vaibhav082004/"><img src="assets/connect-linkedin.svg" height="52" alt="LinkedIn"></a> &nbsp;
-  <a href="mailto:vaibhavya08@gmail.com"><img src="assets/connect-gmail.svg" height="52" alt="Email Vaibhav"></a> &nbsp;
-  <a href="https://github.com/ThomasShelby4477?tab=repositories"><img src="assets/connect-github.svg" height="52" alt="GitHub repositories"></a> &nbsp;
+I work at the intersection of cybersecurity, operational risk, and software engineering.
+<br>
+From SOC detection and logistics analytics to on-device privacy tools, I build systems that make complex work clearer and safer.
+</p>
+
+<hr>
+
+<p align="center">
+  <a href="https://www.linkedin.com/in/vaibhav082004/"><img src="assets/connect-linkedin.svg" height="52" alt="LinkedIn"></a>
+  <a href="mailto:vaibhavya08@gmail.com"><img src="assets/connect-gmail.svg" height="52" alt="Email Vaibhav"></a>
+  <a href="https://github.com/ThomasShelby4477?tab=repositories"><img src="assets/connect-github.svg" height="52" alt="GitHub repositories"></a>
   <a href="https://chromewebstore.google.com/detail/maskr-private-ai-leak-gua/adncldmdaamhlpcccigfhdipjhpicebe"><img src="assets/connect-maskr.svg" height="52" alt="Maskr on the Chrome Web Store"></a>
 </p>
 
@@ -46,6 +58,26 @@ I work at the intersection of cybersecurity, operational risk, and software engi
 | **Building** | On-device privacy tools, structural context for AI assistants, and full-stack products |
 | **Studying** | M.Tech in Computer Science Engineering, specialising in Cyber Security |
 
+<details>
+<summary><strong>Past work & technical leadership</strong></summary>
+
+
+**SOC Intern · RailTel Corporation of India Limited**
+
+<sub>May 2025 – July 2025 · Gurugram, India</sub>
+
+- Worked with Elastic SIEM across 500K+ daily security events; tuned EQL/KQL detection rules to reduce false positives by 15%.
+- Automated threat intelligence enrichment and supported incident response, SOC procedures, and MITRE ATT&CK-mapped reporting.
+
+**Technical Lead · Parakram Sports Club, NFSU**
+
+<sub>February 2026</sub>
+
+Led technical operations for university sports events and built KreedaScore for score tracking, schedules, and live updates.
+
+</details>
+
+
 ## Selected work
 
 Four projects across privacy, developer infrastructure, and everyday workflows.
@@ -65,7 +97,7 @@ Four projects across privacy, developer infrastructure, and everyday workflows.
 **Maskr**: An on-device privacy guard that checks prompts and attachments for sensitive data before they reach AI chatbots. Published on the Chrome Web Store.
 
 <p>
-  <a href="https://chromewebstore.google.com/detail/maskr-private-ai-leak-gua/adncldmdaamhlpcccigfhdipjhpicebe"><img src="assets/project-1-primary.svg" height="52" alt="Open Chrome Web Store"></a> &nbsp;
+  <a href="https://chromewebstore.google.com/detail/maskr-private-ai-leak-gua/adncldmdaamhlpcccigfhdipjhpicebe"><img src="assets/project-1-primary.svg" height="52" alt="Open Chrome Web Store"></a>
   <a href="https://thomasshelby4477.github.io/maskr-privacy/"><img src="assets/project-1-secondary.svg" height="52" alt="Maskr: Privacy policy"></a>
 </p>
 
@@ -88,7 +120,7 @@ Four projects across privacy, developer infrastructure, and everyday workflows.
 **Codebase Architect**: An MCP server that gives AI assistants structural context about a codebase through AST parsing, dependency graphs, and semantic search.
 
 <p>
-  <a href="https://github.com/ThomasShelby4477/CodeBase-Architect"><img src="assets/project-2-primary.svg" height="52" alt="View Codebase Architect repository"></a> &nbsp;
+  <a href="https://github.com/ThomasShelby4477/CodeBase-Architect"><img src="assets/project-2-primary.svg" height="52" alt="View Codebase Architect repository"></a>
   <a href="https://github.com/ThomasShelby4477/CodeBase-Architect/blob/main/ARCHITECTURE.md"><img src="assets/project-2-secondary.svg" height="52" alt="Codebase Architect: Architecture"></a>
 </p>
 
@@ -97,7 +129,7 @@ Four projects across privacy, developer infrastructure, and everyday workflows.
 
 
 <p>
-<a href="https://github.com/ThomasShelby4477/campusnest">
+<a href="https://campusnest-two.vercel.app">
 <picture>
   <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/project-3-dark-mobile.svg">
   <source media="(max-width: 600px)" srcset="assets/project-3-light-mobile.svg">
@@ -111,8 +143,8 @@ Four projects across privacy, developer infrastructure, and everyday workflows.
 **CampusNest**: A student housing and roommate platform with listing discovery, verification workflows, compatibility matching, and real-time messaging.
 
 <p>
-  <a href="https://github.com/ThomasShelby4477/campusnest"><img src="assets/project-3-primary.svg" height="52" alt="View CampusNest repository"></a> &nbsp;
-  <a href="https://campusnest-two.vercel.app"><img src="assets/project-3-secondary.svg" height="52" alt="CampusNest: Visit website"></a>
+  <a href="https://campusnest-two.vercel.app"><img src="assets/project-3-primary.svg" height="52" alt="Visit CampusNest live site"></a>
+  <a href="https://github.com/ThomasShelby4477/campusnest"><img src="assets/project-3-secondary.svg" height="52" alt="View CampusNest repository"></a>
 </p>
 
 
@@ -120,7 +152,7 @@ Four projects across privacy, developer infrastructure, and everyday workflows.
 
 
 <p>
-<a href="https://github.com/ThomasShelby4477/sports-week-score-app">
+<a href="https://kreedascore.vercel.app">
 <picture>
   <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/project-4-dark-mobile.svg">
   <source media="(max-width: 600px)" srcset="assets/project-4-light-mobile.svg">
@@ -134,8 +166,8 @@ Four projects across privacy, developer infrastructure, and everyday workflows.
 **KreedaScore**: A sports-event dashboard for scores, tournament brackets, and medal tallies, with dedicated organiser and admin workflows.
 
 <p>
-  <a href="https://github.com/ThomasShelby4477/sports-week-score-app"><img src="assets/project-4-primary.svg" height="52" alt="View KreedaScore repository"></a> &nbsp;
-  <a href="https://kreedascore.vercel.app"><img src="assets/project-4-secondary.svg" height="52" alt="KreedaScore: Visit website"></a>
+  <a href="https://kreedascore.vercel.app"><img src="assets/project-4-primary.svg" height="52" alt="Visit KreedaScore live site"></a>
+  <a href="https://github.com/ThomasShelby4477/sports-week-score-app"><img src="assets/project-4-secondary.svg" height="52" alt="View KreedaScore repository"></a>
 </p>
 
 
@@ -210,7 +242,7 @@ Four projects across privacy, developer infrastructure, and everyday workflows.
 <sub>Public profile snapshot. Contributions follow GitHub’s rolling year; monthly bars cover the displayed calendar, with partial first and last months. Repository metrics cover public, owned, non-fork repos. Streaks count consecutive active calendar days.</sub>
 
 <p>
-  <a href="https://github.com/ThomasShelby4477?tab=overview"><img src="assets/activity-calendar.svg" height="52" alt="View GitHub contribution calendar"></a> &nbsp;
+  <a href="https://github.com/ThomasShelby4477?tab=overview"><img src="assets/activity-calendar.svg" height="52" alt="View GitHub contribution calendar"></a>
   <a href="https://github.com/ThomasShelby4477?tab=repositories"><img src="assets/activity-repositories.svg" height="52" alt="Browse all GitHub repositories"></a>
 </p>
 
@@ -220,9 +252,9 @@ Four projects across privacy, developer infrastructure, and everyday workflows.
 Let’s connect about cybersecurity, privacy engineering, AI developer tools, or useful software.
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/vaibhav082004/"><img src="assets/connect-linkedin.svg" height="52" alt="LinkedIn"></a> &nbsp;
-  <a href="mailto:vaibhavya08@gmail.com"><img src="assets/connect-gmail.svg" height="52" alt="Email Vaibhav"></a> &nbsp;
-  <a href="https://github.com/ThomasShelby4477?tab=repositories"><img src="assets/connect-github.svg" height="52" alt="GitHub repositories"></a> &nbsp;
+  <a href="https://www.linkedin.com/in/vaibhav082004/"><img src="assets/connect-linkedin.svg" height="52" alt="LinkedIn"></a>
+  <a href="mailto:vaibhavya08@gmail.com"><img src="assets/connect-gmail.svg" height="52" alt="Email Vaibhav"></a>
+  <a href="https://github.com/ThomasShelby4477?tab=repositories"><img src="assets/connect-github.svg" height="52" alt="GitHub repositories"></a>
   <a href="https://chromewebstore.google.com/detail/maskr-private-ai-leak-gua/adncldmdaamhlpcccigfhdipjhpicebe"><img src="assets/connect-maskr.svg" height="52" alt="Maskr on the Chrome Web Store"></a>
 </p>
 

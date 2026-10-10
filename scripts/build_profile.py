@@ -3,7 +3,7 @@
 import html
 import json
 from pathlib import Path
-from visuals import build_static
+from visuals import build_static, project_actions
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = json.loads((ROOT / 'profile.json').read_text())
@@ -25,7 +25,9 @@ def picture(stem, alt, url=None):
 
 def link_badges(items, centered=False):
     align=' align="center"' if centered else ''
-    return f'<p{align}>\n'+' &nbsp;\n'.join(f'  <a href="{html.escape(url,quote=True)}"><img src="assets/{asset}.svg" height="52" alt="{html.escape(label,quote=True)}"></a>' for asset,label,url in items)+'\n</p>\n'
+    # Ordinary whitespace drops at a line break; nonbreaking spaces indent
+    # wrapped rows and misalign mobile actions with the rest of the content.
+    return f'<p{align}>\n'+'\n'.join(f'  <a href="{html.escape(url,quote=True)}"><img src="assets/{asset}.svg" height="52" alt="{html.escape(label,quote=True)}"></a>' for asset,label,url in items)+'\n</p>\n'
 
 
 def navigation():
@@ -43,27 +45,51 @@ def contacts():
     return link_badges([(f'connect-{icon}',label,url) for icon,label,url in destinations],True)
 
 
+def introduction():
+    parts=CONFIG['intro_headline'].split(' | ')
+    headline=' | '.join(html.escape(part) for part in parts[:2])
+    if len(parts)>2:
+        headline+='\n<br>\n'+' | '.join(html.escape(part) for part in parts[2:])
+    first,separator,rest=CONFIG['intro'].partition('. ')
+    copy=html.escape(first+'.' if separator else first)
+    if separator:
+        copy+='\n<br>\n'+html.escape(rest)
+    return f'\n<hr>\n\n<h3 align="center">{headline}</h3>\n\n<p align="center">\n{copy}\n</p>\n\n<hr>\n'
+
+
+def past_work():
+    if not CONFIG.get('show_past_work'):
+        return ''
+    out=['\n<details>\n<summary><strong>Past work & technical leadership</strong></summary>\n']
+    for role in CONFIG['experience']:
+        if role.get('past_role'):
+            out.append(f'\n**{role["role"]} · {role["organisation"]}**\n\n<sub>{role["period"]}</sub>\n\n'+'\n'.join('- '+highlight for highlight in role['highlights']))
+    role=CONFIG.get('leadership')
+    if role:
+        out.append(f'\n**{role["role"]} · {role["organisation"]}**\n\n<sub>{role["period"]}</sub>\n\n{role["description"]}')
+    return '\n'.join(out)+'\n\n</details>\n'
+
+
 def build_readme():
     base = f'https://github.com/{CONFIG["username"]}'
     snapshot = json.loads((ASSETS/'stats.json').read_text())
     out = ['<!-- Generated from profile.json. Edit the source and rebuild. -->',
            picture('hero', f'{CONFIG["display_name"]}: Cybersecurity, data, and software engineering.'),
            navigation(),
-           f'\n{CONFIG["intro"]}\n', contacts(),
+           introduction(), contacts(),
            '\n'+picture('overview', f'{snapshot["contributions"]} public profile contributions in the rolling year · {snapshot["repositories"]} public owned repositories · {snapshot["stars"]} stars earned · on GitHub since {snapshot["joined"]}.'),
            '\n## Current focus\n\n| Focus | What I’m working on |\n| :--- | :--- |\n'
            '| **Role** | Data Analyst Intern at Delhivery · Risk analytics and operational insights |\n'
            '| **Specialisation** | Cybersecurity, on-device privacy, and software engineering |\n'
            '| **Building** | On-device privacy tools, structural context for AI assistants, and full-stack products |\n'
            '| **Studying** | M.Tech in Computer Science Engineering, specialising in Cyber Security |',
+           past_work(),
            '\n## Selected work\n\nFour projects across privacy, developer infrastructure, and everyday workflows.']
     for i,p in enumerate(CONFIG['projects'],1):
-        url = p.get('url') or f'{base}/{p["repo"]}'
+        actions=project_actions(p,CONFIG['username'])
+        url=actions[0][2]
         out.append('\n'+picture(f'project-{i}',p['name']+': '+p['description'],url))
-        primary_label='Open Chrome Web Store' if i==1 else f'View {p["name"]} repository'
-        links = [(f'project-{i}-primary',primary_label,url)]
-        if p.get('extra_url'):
-            links.append((f'project-{i}-secondary',f'{p["name"]}: {p["extra_label"]}',p['extra_url']))
+        links=[(f'project-{i}-{"primary" if j==0 else "secondary"}',alt,destination) for j,(_,alt,destination,_) in enumerate(actions)]
         out.append(f'\n**{p["name"]}**: {p["description"]}\n\n'+link_badges(links))
         if i<len(CONFIG['projects']):
             out.append('\n<br>\n')

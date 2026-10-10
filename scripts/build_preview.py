@@ -4,6 +4,7 @@
 Preview files are excluded from the profile repository. This is a local visual
 approximation; only publication can confirm the complete live GitHub profile.
 """
+import hashlib
 import json
 from pathlib import Path
 import re
@@ -26,6 +27,14 @@ def anchor(match):
     return f'<h{level} id="{slug}">{body}</h{level}>'
 
 markup = re.sub(r'<h([1-6])>(.*?)</h\1>', anchor, markup)
+# Local browsers can retain older SVG dimensions between rapid rebuilds.
+# Fingerprint preview assets so visual checks always use the current artwork.
+def version_asset(match):
+    attribute, path = match.groups()
+    version = hashlib.sha256((ROOT / path).read_bytes()).hexdigest()[:12]
+    return f'{attribute}="{path}?v={version}"'
+
+markup = re.sub(r'(src|srcset)="(assets/[^"?]+)"', version_asset, markup)
 css_url = 'https://raw.githubusercontent.com/sindresorhus/github-markdown-css/main/github-markdown.css'
 if not (PREVIEW / 'github-markdown.css').exists():
     with urllib.request.urlopen(css_url, timeout=30) as response:

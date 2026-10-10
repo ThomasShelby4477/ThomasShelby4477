@@ -81,7 +81,7 @@ def typing_taglines(x,y,size,color):
 
 
 def hero(config,theme,mobile):
-    c=THEMES[theme];w,h=(420,344) if mobile else (960,344);x=24 if mobile else 32
+    c=THEMES[theme];w,h=(420,360) if mobile else (960,376);x=24 if mobile else 32
     b=rect(1,1,w-2,40,c['accent'])
     b+=text(x,27,'CYBERSECURITY / DATA / SOFTWARE',10 if mobile else 15,c['bg'],700,'letter-spacing=".5"')
     b+='''<style>
@@ -95,14 +95,15 @@ def hero(config,theme,mobile):
         .typing-motion{display:none}.typing-still{display:inline}
       }
     </style>'''
-    b+=typed_name(x,120 if mobile else 132,'VAIBHAV',63 if mobile else 88,c['fg'],.18)
-    b+=typed_name(x,185 if mobile else 217,'YADAV_',63 if mobile else 88,c['accent'],1)
-    b+=f'<path d="M{x} 237h{w-2*x if mobile else 460}" stroke="{c["fg"]}" stroke-width="2"/>'
-    b+=typing_taglines(x,267,18 if mobile else 22,c['fg'])
-    b+=text(x,294,'Privacy. AI tools. Operational risk.',12 if mobile else 14,c['muted'])
-    b+=text(x,325,'@'+config['username'],11,c['warm'],600)
+    b+=typed_name(x,126 if mobile else 138,'VAIBHAV',63 if mobile else 88,c['fg'],.18)
+    b+=typed_name(x,205 if mobile else 246,'YADAV_',63 if mobile else 88,c['accent'],1)
+    divider_y=237 if mobile else 278
+    b+=f'<path d="M{x} {divider_y}h{w-2*x if mobile else 460}" stroke="{c["fg"]}" stroke-width="2"/>'
+    b+=typing_taglines(x,267 if mobile else 308,18 if mobile else 22,c['fg'])
+    b+=text(x,294 if mobile else 336,'Privacy. AI tools. Operational risk.',12 if mobile else 14,c['muted'])
+    b+=text(x,337 if mobile else 360,'@'+config['username'],11,c['warm'],600)
     if not mobile:
-        b+=rect(573,64,354,249,c['bg'],c['fg'])
+        b+=rect(573,64,354,280,c['bg'],c['fg'])
         b+=rect(573,64,354,30,c['warm'])+text(590,84,'SYSTEM / BUILDING WITH TRUST',12,c['bg'],700)
         for gx in range(590,911,32):
             b+=f'<path d="M{gx} 112v148" stroke="{c["line"]}" stroke-width=".5"/>'
@@ -110,7 +111,7 @@ def hero(config,theme,mobile):
             b+=f'<path d="M590 {gy}h320" stroke="{c["line"]}" stroke-width=".5"/>'
         b+=f'<path d="M750 122l61 22v45l-61 53-61-53v-45Z" fill="{c["bg"]}" stroke="{c["accent"]}" stroke-width="4"/>'
         b+=f'<path d="M723 180l20 20 35-43" fill="none" stroke="{c["accent"]}" stroke-width="7"/>'
-        b+=text(590,292,'[ SECURE BY INTENT ]',15,c['fg'],700)
+        b+=text(590,323,'[ SECURE BY INTENT ]',15,c['fg'],700)
     return svg(w,h,b,config['display_name'],'Vaibhav Yadav. Cybersecurity, data and software. Security-minded engineering. Privacy tools, AI infrastructure and full-stack products.',theme)
 
 
@@ -134,9 +135,11 @@ def project(p,index,theme,mobile):
     label=' · '.join(short[:3])
     b+=text(ix+4,y,label,8 if mobile else 11,c['muted'])
     if not mobile:
-        b+=rect(777,64,139,144,accent)
-        b+=icon(p['icon'],818,87,58,c['bg'])
-        b+=text(847,190,'OPEN ↗',12,c['bg'],900,'text-anchor="middle"')
+        action_x=w-x-139
+        action_center=action_x+139/2
+        b+=rect(action_x,64,139,144,accent)
+        b+=icon(p['icon'],action_center-29,87,58,c['bg'])
+        b+=text(action_center,190,'OPEN ↗',12,c['bg'],900,'text-anchor="middle"')
     return svg(w,h,b,p['name'],p['description']+' '+p['detail']+' Stack: '+p['stack'],theme)
 
 
@@ -144,10 +147,10 @@ def overview(data,theme,mobile):
     c=THEMES[theme];w,h=(420,210) if mobile else (960,132);b=''
     metrics=[(data['contributions'],'Contributions','Public profile · rolling year',c['accent']),(data['repositories'],'Public repositories','Owned · non-fork',c['fg']),(data['stars'],'Stars earned','Across public repositories',c['warm']),(data['joined'],'On GitHub since','Building in public',c['fg'])]
     for i,(value,label,detail,color) in enumerate(metrics):
-        x=22+(i%2)*199 if mobile else 28+i*236;y=15+(i//2)*98 if mobile else 17
+        x=24+(i%2)*210 if mobile else 32+i*224;y=15+(i//2)*105 if mobile else 17
         if i:
-            if mobile and i%2:b+=f'<path d="M{x-8} {y+6}v69" stroke="{c["line"]}"/>'
-            elif not mobile:b+=f'<path d="M{x-12} 26v79" stroke="{c["line"]}"/>'
+            if mobile and i%2:b+=f'<path d="M210 {y+6}v69" stroke="{c["line"]}"/>'
+            elif not mobile:b+=f'<path d="M{x-16} 26v79" stroke="{c["line"]}"/>'
         b+=text(x,y+34,f'{value:,}' if isinstance(value,int) else value,33 if mobile else 39,color,650,'letter-spacing="-1"')
         b+=text(x,y+57,label,12 if mobile else 13,c['fg'],500)
         b+=text(x,y+77,detail,9 if mobile else 10,c['muted'])
@@ -181,13 +184,13 @@ def monthly_chart(data,theme,x,y,w,h):
 
 
 def activity(data,theme,mobile):
-    c=THEMES[theme];w,h=(420,610) if mobile else (960,590);x=26 if mobile else 32
+    c=THEMES[theme];w,h=(420,610) if mobile else (960,590);x=24 if mobile else 32
     follower_label='follower' if data['followers']==1 else 'followers'
     b=text(x,34,'GITHUB / ENGINEERING ACTIVITY',11,c['accent'],600,'letter-spacing="1"')
     b+=text(x,57,f'Public snapshot · {data["updated"]}',11,c['muted'])
     metrics=[(data['active_days'],'Active days'),(data['longest_streak'],'Longest streak · days'),(data['most_active_day']['count'],'Peak contributions')]
     for i,(value,label) in enumerate(metrics):
-        mx=x+i*(126 if mobile else 300)
+        mx=x+i*((w-2*x)/3)
         b+=text(mx,103,value,32,c['fg'],600)+text(mx,126,label,8 if mobile else 11,c['muted'])
     if mobile:
         # Two chronological strips keep all 53 weeks legible on a phone.
@@ -197,13 +200,13 @@ def activity(data,theme,mobile):
             chunk=original[start:start+middle]
             b+=calendar_grid({'calendar':chunk},theme,x,gy,10,3)
         b+=text(x,406,'Earlier weeks above · latest weeks below',9,c['muted'])
-        b+=f'<path d="M26 426h368" stroke="{c["line"]}"/>'
-        b+=monthly_chart(data,theme,x,470,366,72)
+        b+=f'<path d="M{x} 426h{w-2*x}" stroke="{c["line"]}"/>'
+        b+=monthly_chart(data,theme,x,470,w-2*x,72)
         b+=text(x,588,f'{data["followers"]} {follower_label} · {data["forks"]} forks · Current streak: {data["current_streak"]} days',9,c['muted'])
     else:
         b+=text(x,166,'CONTRIBUTION CALENDAR',11,c['accent'],600,'letter-spacing="1"')
-        b+=calendar_grid(data,theme,54,197,13,3)
-        b+=text(26,224,'Mon',8,c['muted'])+text(26,256,'Wed',8,c['muted'])+text(26,288,'Fri',8,c['muted'])
+        b+=calendar_grid(data,theme,x+28,197,13,3)
+        b+=text(x,224,'Mon',8,c['muted'])+text(x,256,'Wed',8,c['muted'])+text(x,288,'Fri',8,c['muted'])
         b+=text(x,331,f'{data["calendar"][0]["date"]} → {data["calendar"][-1]["date"]} · each square is one day',10,c['muted'])
         b+=f'<path d="M32 354h896" stroke="{c["line"]}"/>'
         b+=monthly_chart(data,theme,32,409,896,115)
@@ -246,7 +249,7 @@ def toolkit(theme,mobile):
 def education(config,theme,mobile):
     c=THEMES[theme];w,h=(420,207) if mobile else (960,129);b=''
     for i,d in enumerate(config['education']['degrees']):
-        x=26 if mobile else 32+i*475;y=30+i*91 if mobile else 36;color=c['accent'] if i==0 else c['warm']
+        x=24 if mobile else 32+i*480;y=30+i*91 if mobile else 36;color=c['accent'] if i==0 else c['warm']
         b+=f'<circle cx="{x+8}" cy="{y-6}" r="6" fill="{color}"/>'+text(x+26,y,d['status'].upper(),11,color,600,'letter-spacing="1"')
         b+=text(x,y+30,'B.Tech' if i==0 else 'M.Tech',26,c['fg'],650)
         b+=text(x+103,y+30,'Computer Science Engineering',10 if mobile else 13,c['muted'])
@@ -269,7 +272,7 @@ def link_artwork(label,width,brand=None,primary=False,font_size=12):
 
 
 def contact_badge(name,label):
-    return link_artwork(label,156,name)
+    return link_artwork(label,144,name)
 
 
 def navigation_badge(label):
@@ -277,6 +280,22 @@ def navigation_badge(label):
     body=rect(.5,4.5,width-1,43,c['bg'],c['line'])
     body+=text(width/2,30,label,12,c['fg'],700,'text-anchor="middle"')
     return f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{h}" viewBox="0 0 {width} {h}" role="img"><title>{html.escape(label)}</title><g font-family="ui-monospace,Menlo,Consolas,monospace">{body}</g></svg>'
+
+
+def project_actions(project,username):
+    """Keep destination order, artwork, and accessible link labels together."""
+    name=project['name']
+    repository=project.get('url') or f'https://github.com/{username}/{project["repo"]}'
+    if project.get('extra_label')=='Visit website':
+        return [('LIVE SITE',f'Visit {name} live site',project['extra_url'],None),
+                ('REPOSITORY',f'View {name} repository',repository,'github')]
+    store=project.get('primary_label')=='Chrome Web Store'
+    actions=[('CHROME STORE' if store else 'REPOSITORY',
+              'Open Chrome Web Store' if store else f'View {name} repository',
+              repository,'chrome' if store else 'github')]
+    if project.get('extra_url'):
+        actions.append(('POLICY' if store else 'ARCHITECTURE',f'{name}: {project["extra_label"]}',project['extra_url'],None))
+    return actions
 
 
 def build_static(config):
@@ -287,16 +306,15 @@ def build_static(config):
         write_variants(f'project-{i+1}',lambda t,m,i=i,p=p:project(p,i,t,m))
     for name,label in [('linkedin','LINKEDIN'),('gmail','GMAIL'),('github','GITHUB'),('maskr','MASKR')]:
         (ASSETS/f'connect-{name}.svg').write_text(contact_badge(name,label))
-    for name,label in [('work','WORK ↓'),('toolkit','TOOLKIT ↓'),('education','EDUCATION'),('activity','ACTIVITY ↓'),('connect','CONNECT ↓')]:
+    for name,label in [('work','WORK ↓'),('toolkit','TOOLKIT ↓'),('education','EDUCATION ↓'),('activity','ACTIVITY ↓'),('connect','CONNECT ↓')]:
         (ASSETS/f'nav-{name}.svg').write_text(navigation_badge(label))
     if config.get('show_experience',True):
         (ASSETS/'nav-experience.svg').write_text(navigation_badge('EXPERIENCE'))
     else:
         (ASSETS/'nav-experience.svg').unlink(missing_ok=True)
     for i,p in enumerate(config['projects'],1):
-        label,brand=('CHROME STORE','chrome') if i==1 else ('REPOSITORY','github')
-        (ASSETS/f'project-{i}-primary.svg').write_text(link_artwork(label,168,brand,True))
-        label='POLICY' if i==1 else 'ARCHITECTURE' if i==2 else 'LIVE SITE'
-        (ASSETS/f'project-{i}-secondary.svg').write_text(link_artwork(label,148))
-    (ASSETS/'activity-calendar.svg').write_text(link_artwork('CALENDAR',156,primary=True))
-    (ASSETS/'activity-repositories.svg').write_text(link_artwork('REPOSITORIES',184,'github'))
+        for j,(label,_,_,brand) in enumerate(project_actions(p,config['username'])):
+            suffix='primary' if j==0 else 'secondary'
+            (ASSETS/f'project-{i}-{suffix}.svg').write_text(link_artwork(label,168,brand,j==0))
+    (ASSETS/'activity-calendar.svg').write_text(link_artwork('CALENDAR',168,primary=True))
+    (ASSETS/'activity-repositories.svg').write_text(link_artwork('REPOSITORIES',168,'github'))

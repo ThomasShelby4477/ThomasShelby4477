@@ -2,6 +2,7 @@
   "username": "ThomasShelby4477",
   "display_name": "Vaibhav Yadav",
   "headline": "Cybersecurity · Risk analytics · Software engineering",
+  "intro_headline": "Data Analyst Intern @ Delhivery | Former SOC Intern @ RailTel | M.Tech Student | Developer of Maskr",
   "intro": "I work at the intersection of cybersecurity, operational risk, and software engineering. From SOC detection and logistics analytics to on-device privacy tools, I build systems that make complex work clearer and safer.",
   "contacts": [
     {
@@ -26,6 +27,7 @@
     {
       "role": "SOC Intern",
       "organisation": "RailTel Corporation of India Limited",
+      "past_role": true,
       "period": "May 2025 – July 2025 · Gurugram, India",
       "highlights": [
         "Worked with Elastic SIEM across 500K+ daily security events; tuned EQL/KQL detection rules to reduce false positives by 15%.",
@@ -130,5 +132,6 @@
     "period": "February 2026",
     "description": "Led technical operations for university sports events and built KreedaScore for score tracking, schedules, and live updates."
   },
-  "show_experience": false
+  "show_experience": false,
+  "show_past_work": true
 }

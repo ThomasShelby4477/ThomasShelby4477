@@ -25,7 +25,7 @@ GitHub is a Markdown surface with sanitised HTML, rather than a freeform website
 
 1. Name, professional positioning, custom header, short navigation.
 2. Brief introduction, branded LinkedIn/Gmail/GitHub/Maskr links, and a compact statistics overview.
-3. Current focus: role, building interests, and M.Tech studies.
+3. Current focus: role, building interests, and M.Tech studies, followed by a compact past-work disclosure.
 4. Selected work: Maskr, Codebase Architect, CampusNest, KreedaScore.
 5. Skills grouped by security, engineering, data, and AI.
 6. Education and the CEH qualification explicitly marked in progress.
@@ -33,6 +33,8 @@ GitHub is a Markdown surface with sanitised HTML, rather than a freeform website
 8. Contact links and a concise invitation to connect.
 
 Projects appear early because visitors can inspect them directly. Current focus and education add context. The compact numbers appear near the introduction; the detailed activity dashboard follows the work and background. Vaibhav requested removal of the entire Experience section and its navigation link. The supplied introduction remains one native paragraph beneath navigation, wrapping naturally on smaller screens.
+
+Vaibhav later supplied a centred professional-introduction reference and requested his past experience. The headline now lists his current Delhivery internship, former RailTel SOC internship, M.Tech studies, and Maskr work across two intentional lines. The supplied introduction remains centred below it, with native divider lines. A collapsible “Past work & technical leadership” block below Current focus contains the résumé's RailTel role, dates, detection/automation results, and Parakram leadership. The full Experience heading and navigation item stay omitted.
 
 ## Project evidence
 
@@ -111,3 +113,11 @@ References: [Readme Typing SVG](https://github.com/DenverCoder1/readme-typing-sv
 Artwork now sits in native paragraphs, giving project images a verified 16px gap before their descriptions under GitHub-style Markdown rendering. Project interiors have larger insets, descriptions and actions are separated, and project groups have consistent breathing room. Navigation and contact links use square branded artwork with 44px visible panels inside 52px images. Primary project destinations use acid green; secondary documentation and live-site destinations use outlined links. The six-category toolkit has three columns on desktop and a single column on phones, with a collapsible native skills table.
 
 All five remaining navigation destinations were clicked and reached their correct sections. Desktop 1280px and phone 390px/320px previews showed no page-wide overflow or broken images; mobile artwork and the skills disclosure were checked. Public repository destinations were checked against GitHub's API. Maskr's store and policy, CampusNest, and KreedaScore returned HTTP 200. LinkedIn still requires sign-in for independent content review. Em dash characters were removed from generated profile content and preview titles at Vaibhav's request. This remains a local draft.
+
+## Alignment review
+
+Header name lines now have separate text bounds. Hero, project, education, and statistics text use consistent 32px desktop and 24px phone insets. Statistics columns have even spacing, project action panels use matching right insets, and paired link artwork has equal 168px widths. Ordinary whitespace replaces nonbreaking separators between buttons, removing the extra indent on wrapped rows. Contact rows remain centred and align consistently between rows; content and project actions follow the same left edge.
+
+CampusNest and KreedaScore now put the highlighted LIVE SITE destination first and REPOSITORY second. Their cards also open the live site, matching the primary action. Other project destinations are retained.
+
+Read-only browser geometry checks across 37 current artwork layouts found no text outside the SVG bounds or overlapping static text rectangles. Desktop and 390px/320px phone checks confirmed shared content edges, equal button widths and baselines, responsive assets, and no page-wide overflow or broken images. The preview fingerprints artwork URLs so cached SVG dimensions cannot conceal a rebuild. The geometry fixture and screenshots remain local, excluded from publication.
