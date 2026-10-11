@@ -44,7 +44,7 @@ From SOC detection and logistics analytics to on-device privacy tools, I build s
   <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/overview-dark-mobile.svg">
   <source media="(max-width: 600px)" srcset="assets/overview-light-mobile.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/overview-dark.svg">
-  <img src="assets/overview-light.svg" width="100%" alt="183 public profile contributions in the rolling year · 11 public owned repositories · 1 stars earned · on GitHub since 2024.">
+  <img src="assets/overview-light.svg" width="100%" alt="184 public profile contributions in the rolling year · 11 public owned repositories · 1 stars earned · on GitHub since 2024.">
 </picture>
 </p>
 
@@ -234,7 +234,7 @@ Four projects across privacy, developer infrastructure, and everyday workflows.
   <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/activity-dark-mobile.svg">
   <source media="(max-width: 600px)" srcset="assets/activity-light-mobile.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/activity-dark.svg">
-  <img src="assets/activity-light.svg" width="100%" alt="Public calendar: 183 contributions, 20 active days, longest streak 3 days. Updated 2026-10-10.">
+  <img src="assets/activity-light.svg" width="100%" alt="Public calendar: 184 contributions, 20 active days, longest streak 3 days. Updated 2026-10-11.">
 </picture>
 </p>
 
