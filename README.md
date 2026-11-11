@@ -234,7 +234,7 @@ Four projects across privacy, developer infrastructure, and everyday workflows.
   <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/activity-dark-mobile.svg">
   <source media="(max-width: 600px)" srcset="assets/activity-light-mobile.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/activity-dark.svg">
-  <img src="assets/activity-light.svg" width="100%" alt="Public calendar: 306 contributions, 34 active days, longest streak 3 days. Updated 2026-11-10.">
+  <img src="assets/activity-light.svg" width="100%" alt="Public calendar: 306 contributions, 34 active days, longest streak 3 days. Updated 2026-11-11.">
 </picture>
 </p>
 
